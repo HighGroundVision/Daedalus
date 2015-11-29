@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DotaApi.cs" />
+    <Compile Include="DotaApiClient.cs" />
     <Compile Include="GetLeagueListing\GetLeagueListingResult.cs" />
     <Compile Include="GetLeagueListing\League.cs" />
     <Compile Include="GetLeagueListing\Result.cs" />

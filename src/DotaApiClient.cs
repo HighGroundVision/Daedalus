@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace HGV.Daedalus
 {
-	public class DotaApi : IDisposable
+	public class DotaApiClient : IDisposable
 	{
 		private string SteamApiKey { get; set; }
 
 		private HttpClient Client { get; set; }
 
-		public DotaApi(string key)
+		public DotaApiClient(string key)
 		{
 			if (string.IsNullOrWhiteSpace(key))
 				throw new ArgumentNullException(nameof(key));

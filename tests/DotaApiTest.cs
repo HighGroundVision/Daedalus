@@ -14,7 +14,7 @@ namespace HGV.Daedalus.Tests
 		{
 			Assert.Throws<ArgumentNullException>(() =>
 			{
-				using (var client = new DotaApi(null))
+				using (var client = new DotaApiClient(null))
 				{
 				}
 			});

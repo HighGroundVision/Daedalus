@@ -15,7 +15,7 @@ namespace HGV.Daedalus.Tests
 		[Fact]
 		public async Task NotNull()
 		{
-			using (var client = new DotaApi(this.ApiKey))
+			using (var client = new DotaApiClient(this.ApiKey))
 			{
 				var team = await client.GetTeamInfoByTeamID(2013239);
 
@@ -26,7 +26,7 @@ namespace HGV.Daedalus.Tests
 		[Fact]
 		public async Task VerifyTeam()
 		{
-			using (var client = new DotaApi(this.ApiKey))
+			using (var client = new DotaApiClient(this.ApiKey))
 			{
 				var team = await client.GetTeamInfoByTeamID(2013239);
 
@@ -45,7 +45,7 @@ namespace HGV.Daedalus.Tests
 		[Fact]
 		public async Task Null()
 		{
-			using (var client = new DotaApi(this.ApiKey))
+			using (var client = new DotaApiClient(this.ApiKey))
 			{
 				var team = await client.GetTeamInfoByTeamID(long.MaxValue);
 

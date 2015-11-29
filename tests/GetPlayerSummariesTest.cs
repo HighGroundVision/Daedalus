@@ -15,7 +15,7 @@ namespace HGV.Daedalus.Tests
 		[Fact]
 		public async Task NotNull()
 		{
-			using (var client = new DotaApi(this.ApiKey))
+			using (var client = new DotaApiClient(this.ApiKey))
 			{
 				var profile = await client.GetPlayerSummaries(76561197973295540);
 
@@ -27,7 +27,7 @@ namespace HGV.Daedalus.Tests
 		[Fact]
 		public async Task VerifyProfile()
 		{
-			using (var client = new DotaApi(this.ApiKey))
+			using (var client = new DotaApiClient(this.ApiKey))
 			{
 				var profile = await client.GetPlayerSummaries(76561197973295540);
 
@@ -42,7 +42,7 @@ namespace HGV.Daedalus.Tests
 		[Fact]
 		public async Task Null()
 		{
-			using (var client = new DotaApi(this.ApiKey))
+			using (var client = new DotaApiClient(this.ApiKey))
 			{
 				var profile = await client.GetPlayerSummaries(1234);
 				

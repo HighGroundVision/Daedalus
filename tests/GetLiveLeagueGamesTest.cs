@@ -15,7 +15,7 @@ namespace HGV.Daedalus.Tests
 		[Fact]
 		public async Task NotEmpty()
 		{
-			using (var client = new DotaApi(this.ApiKey))
+			using (var client = new DotaApiClient(this.ApiKey))
 			{
 				var leagues = await client.GetLiveLeagueGames();
 

@@ -15,7 +15,7 @@ namespace HGV.Daedalus.Tests
 		[Fact]
 		public async Task NotEmpty_AccountId()
 		{
-			using (var client = new DotaApi(this.ApiKey))
+			using (var client = new DotaApiClient(this.ApiKey))
 			{
 				var matches = await client.GetMatchHistory(76561197973295540);
 
@@ -26,7 +26,7 @@ namespace HGV.Daedalus.Tests
 		[Fact]
 		public async Task NotEmpty_HeroId()
 		{
-			using (var client = new DotaApi(this.ApiKey))
+			using (var client = new DotaApiClient(this.ApiKey))
 			{
 				var matches = await client.GetMatchHistory(76561197973295540, 1);
 
@@ -41,7 +41,7 @@ namespace HGV.Daedalus.Tests
 		{
 			await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
 			{
-				using (var client = new DotaApi(this.ApiKey))
+				using (var client = new DotaApiClient(this.ApiKey))
 				{
 					var matches = await client.GetMatchHistory(0);
 				}
@@ -54,7 +54,7 @@ namespace HGV.Daedalus.Tests
 		{
 			await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
 			{
-				using (var client = new DotaApi(this.ApiKey))
+				using (var client = new DotaApiClient(this.ApiKey))
 				{
 					var matches = await client.GetMatchHistory(76561197973295540, 0);
 				}
@@ -67,7 +67,7 @@ namespace HGV.Daedalus.Tests
 		{
 			await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
 			{
-				using (var client = new DotaApi(this.ApiKey))
+				using (var client = new DotaApiClient(this.ApiKey))
 				{
 					var matches = await client.GetMatchHistory(76561197973295540, 150);
 				}

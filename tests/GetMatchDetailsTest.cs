@@ -15,7 +15,7 @@ namespace HGV.Daedalus.Tests
 		[Fact]
 		public async Task NotNull()
 		{
-			using (var client = new DotaApi(this.ApiKey))
+			using (var client = new DotaApiClient(this.ApiKey))
 			{
 				var matchDetails = await client.GetMatchDetails(1962101529);
 
@@ -28,7 +28,7 @@ namespace HGV.Daedalus.Tests
 		{
 			await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () =>
 			{
-				using (var client = new DotaApi(this.ApiKey))
+				using (var client = new DotaApiClient(this.ApiKey))
 				{
 					var matchDetails = await client.GetMatchDetails(0);
 				}
