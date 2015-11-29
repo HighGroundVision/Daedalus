@@ -8,7 +8,7 @@ using Xunit;
 
 namespace HGV.Daedalus.Tests
 {
-	public class GetLeagueListingTest
+	public class GetLiveLeagueGamesTest
 	{
 		private string ApiKey = ConfigurationManager.AppSettings["SteamApiKey"];
 
@@ -17,11 +17,10 @@ namespace HGV.Daedalus.Tests
 		{
 			using (var client = new DotaApi(this.ApiKey))
 			{
-				var leagues = await client.GetLeagueListing();
+				var leagues = await client.GetLiveLeagueGames();
 
 				Assert.NotEmpty(leagues);
 			}
 		}
-
 	}
 }

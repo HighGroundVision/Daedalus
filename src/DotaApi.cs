@@ -55,6 +55,9 @@ namespace HGV.Daedalus
 		/// </summary>
 		public async Task<GetMatchDetails.Match> GetMatchDetails(long matchId)
 		{
+			if (matchId == 0)
+				throw new ArgumentOutOfRangeException(nameof(matchId));
+
 			var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/v0001?key={0}&match_id={1}", this.SteamApiKey, matchId);
 			var json = await this.Client.GetStringAsync(url);
 			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetMatchDetails.GetMatchDetailsResult>(json);
@@ -66,10 +69,13 @@ namespace HGV.Daedalus
 		/// </summary>
 		public async Task<List<GetMatchHistory.Match>> GetMatchHistory(long accountId)
 		{
+			if (accountId == 0)
+				throw new ArgumentOutOfRangeException(nameof(accountId));
+
 			var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/?key={0}&account_id={1}", this.SteamApiKey, accountId);
 			var json = await this.Client.GetStringAsync(url);
 			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetMatchHistory.GetMatchHistoryResult>(json);
-			return data?.matches ?? new List<Daedalus.GetMatchHistory.Match>();
+			return data?.result?.matches ?? new List<Daedalus.GetMatchHistory.Match>();
 		}
 
 		/// <summary>
@@ -77,10 +83,19 @@ namespace HGV.Daedalus
 		/// </summary>
 		public async Task<List<GetMatchHistory.Match>> GetMatchHistory(long accountId, int heroId)
 		{
+			if (accountId == 0)
+				throw new ArgumentOutOfRangeException(nameof(accountId));
+
+			if (heroId == 0)
+				throw new ArgumentOutOfRangeException(nameof(heroId));
+
+			if(heroId > 120)
+				throw new ArgumentOutOfRangeException(nameof(heroId));
+
 			var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/?key={0}&account_id={1}&hero_id={2}", this.SteamApiKey, accountId, heroId);
 			var json = await this.Client.GetStringAsync(url);
 			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetMatchHistory.GetMatchHistoryResult>(json);
-			return data?.matches ?? new List<Daedalus.GetMatchHistory.Match>();
+			return data?.result?.matches ?? new List<Daedalus.GetMatchHistory.Match>();
 		}
 
 		/// <summary>
@@ -107,7 +122,7 @@ namespace HGV.Daedalus
 		/// <summary>
 		/// https://wiki.teamfortress.com/wiki/WebAPI/GetPlayerSummaries
 		/// </summary>
-		public async Task<GetPlayerSummaries.Player> GetPlayerSummaries(string steamId)
+		public async Task<GetPlayerSummaries.Player> GetPlayerSummaries(long steamId)
 		{
 			var url = string.Format("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={0}&steamids={1}", this.SteamApiKey, steamId);
 			var json = await this.Client.GetStringAsync(url);

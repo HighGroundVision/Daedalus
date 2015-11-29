@@ -63,6 +63,7 @@
     <Compile Include="GetMatchHistory\GetMatchHistoryResult.cs" />
     <Compile Include="GetMatchHistory\Match.cs" />
     <Compile Include="GetMatchHistory\Player.cs" />
+    <Compile Include="GetMatchHistory\Result.cs" />
     <Compile Include="GetPlayerSummaries\GetPlayerSummariesResult.cs" />
     <Compile Include="GetPlayerSummaries\Player.cs" />
     <Compile Include="GetPlayerSummaries\Reponse.cs" />
