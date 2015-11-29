@@ -16,6 +16,8 @@ Uses [Dota API](https://wiki.teamfortress.com/wiki/WebAPI) download through a we
 
 To download donwnload the data in json format call one of the funcations with the appropriate pramaters. 
 
+You can now download this project as a NuGet package through [MyGet](https://www.myget.org/feed/highgroundvision/package/nuget/HGV.Daedalus). We may move these packages to [Nuget Gallery](https://www.nuget.org/) in the future. 
+
 ## License
 
 GNUv2 see the LICENSE file.
