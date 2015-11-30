@@ -1,4 +1,4 @@
-# Steam DOTA2 Client
+#  DOTA2 Api Client 
 
 [![highgroundvision MyGet Build Status](https://www.myget.org/BuildSource/Badge/highgroundvision?identifier=3130fc0d-1772-42e4-a9db-ddfae26c1d2c)](https://www.myget.org/feed/highgroundvision/package/nuget/HGV.Daedalus)
 
