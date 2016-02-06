@@ -24,8 +24,7 @@ See the LICENSE file.
 
 ## Help
 
-If you have any questions, you can find us in the at [HGV Facebook Group](http://www.facebook.com/groups/1079291435444419/
-)
+If you have any questions, you can tweet us at [@DotaHGV](https://twitter.com/DotaHGV)
 
 ## Authors and Acknowledgements
 
