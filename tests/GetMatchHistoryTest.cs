@@ -10,7 +10,7 @@ namespace HGV.Daedalus.Tests
 {
 	public class GetMatchHistoryTest
 	{
-		private string ApiKey = ConfigurationManager.AppSettings["SteamApiKey"];
+		private string ApiKey = ConfigurationManager.AppSettings["Steam:ApiKey"];
 
 		[Fact]
 		public async Task NotEmpty_AccountId()
