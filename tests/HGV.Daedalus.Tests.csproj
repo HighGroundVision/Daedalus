@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DotaApiTest.cs" />
+    <Compile Include="GetMatchesInSequenceTest.cs" />
     <Compile Include="GetLeagueListingTest.cs" />
     <Compile Include="GetLiveLeagueGamesTest.cs" />
     <Compile Include="GetMatchDetailsTest.cs" />

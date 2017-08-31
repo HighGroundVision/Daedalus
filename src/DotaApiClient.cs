@@ -75,6 +75,19 @@ namespace HGV.Daedalus
             return data?.result?.matches ?? new List<Daedalus.GetMatchHistory.Match>();
         }
 
+        /// <summary>
+		/// https://wiki.teamfortress.com/wiki/WebAPI/GetMatchHistoryBySequenceNum
+		/// </summary>
+		public async Task<List<GetMatchDetails.Match>> GetMatchesInSequence(long number)
+        {
+            if (number == 0)
+                throw new ArgumentOutOfRangeException(nameof(number));
+
+            var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistoryBySequenceNum/V001/?key={0}&start_at_match_seq_num={1}", this.SteamApiKey, number);
+            var json = await this.Client.GetStringAsync(url);
+            var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetMatchHistoryBySequenceNum.GetMatchHistoryBySequenceNumResult>(json);
+            return data?.result?.matches ?? new List<Daedalus.GetMatchDetails.Match>();
+        }
 
         /// <summary>
         /// https://wiki.teamfortress.com/wiki/WebAPI/GetMatchHistory
