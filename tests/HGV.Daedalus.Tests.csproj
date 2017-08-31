@@ -68,6 +68,7 @@
     <Compile Include="GetLeagueListingTest.cs" />
     <Compile Include="GetLiveLeagueGamesTest.cs" />
     <Compile Include="GetMatchDetailsTest.cs" />
+    <Compile Include="GetLastestMatchesTest.cs" />
     <Compile Include="GetMatchHistoryTest.cs" />
     <Compile Include="GetPlayerSummariesTest.cs" />
     <Compile Include="GetTeamInfoByTeamIDTest.cs" />

@@ -64,10 +64,22 @@ namespace HGV.Daedalus
 			return data?.result;
 		}
 
-		/// <summary>
+        /// <summary>
 		/// https://wiki.teamfortress.com/wiki/WebAPI/GetMatchHistory
 		/// </summary>
-		public async Task<List<GetMatchHistory.Match>> GetMatchHistory(long accountId)
+		public async Task<List<GetMatchHistory.Match>> GetLastestMatches()
+        {
+            var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/?key={0}", this.SteamApiKey);
+            var json = await this.Client.GetStringAsync(url);
+            var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetMatchHistory.GetMatchHistoryResult>(json);
+            return data?.result?.matches ?? new List<Daedalus.GetMatchHistory.Match>();
+        }
+
+
+        /// <summary>
+        /// https://wiki.teamfortress.com/wiki/WebAPI/GetMatchHistory
+        /// </summary>
+        public async Task<List<GetMatchHistory.Match>> GetMatchHistory(long accountId)
 		{
 			if (accountId == 0)
 				throw new ArgumentOutOfRangeException(nameof(accountId));

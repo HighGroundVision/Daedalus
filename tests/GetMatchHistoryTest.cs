@@ -12,7 +12,7 @@ namespace HGV.Daedalus.Tests
 	{
 		private string ApiKey = ConfigurationManager.AppSettings["Steam:ApiKey"];
 
-		[Fact]
+        [Fact]
 		public async Task NotEmpty_AccountId()
 		{
 			using (var client = new DotaApiClient(this.ApiKey))
