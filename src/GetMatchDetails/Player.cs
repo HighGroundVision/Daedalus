@@ -25,9 +25,14 @@ namespace HGV.Daedalus.GetMatchDetails
 		public int item3 { get; set; }
 		public int item4 { get; set; }
 		public int item5 { get; set; }
-		public int gold_spent { get; set; }
+        public int backpack_0 { get; set; }
+        public int backpack_1 { get; set; }
+        public int backpack_2 { get; set; }
+        public int gold_spent { get; set; }
 		public int hero_damage { get; set; }
 		public int tower_damage { get; set; }
 		public int hero_healing { get; set; }
-	}
+
+        public List<Upgrade> ability_upgrades { get; set; }
+    }
 }

@@ -60,6 +60,7 @@
     <Compile Include="GetMatchDetails\GetMatchDetailsResult.cs" />
     <Compile Include="GetMatchDetails\Match.cs" />
     <Compile Include="GetMatchDetails\Player.cs" />
+    <Compile Include="GetMatchDetails\Upgrade.cs" />
     <Compile Include="GetMatchHistoryBySequenceNum\GetMatchHistoryBySequenceNumResult.cs" />
     <Compile Include="GetMatchHistoryBySequenceNum\Result.cs" />
     <Compile Include="GetMatchHistory\GetMatchHistoryResult.cs" />
