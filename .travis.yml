@@ -1,2 +1,6 @@
 language: csharp
 solution: HGV.Daedalus.sln
+mono: none
+dotnet: 2.0.1
+script:
+ - dotnet restore
