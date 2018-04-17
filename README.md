@@ -1,6 +1,7 @@
 #  DOTA2 Api Client 
 
 [![highgroundvision MyGet Build Status](https://www.myget.org/BuildSource/Badge/highgroundvision?identifier=3130fc0d-1772-42e4-a9db-ddfae26c1d2c)](https://www.myget.org/feed/highgroundvision/package/nuget/HGV.Daedalus)
+[![Build Status](https://travis-ci.org/HighGroundVision/Daedalus.svg?branch=master)](https://travis-ci.org/HighGroundVision/Daedalus)
 
 Uses [Dota API](https://wiki.teamfortress.com/wiki/WebAPI) download through a web API info about dota heroes, matches, leauges, teams, and items. Its primay function is to download match data.
 
