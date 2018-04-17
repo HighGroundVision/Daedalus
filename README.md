@@ -18,15 +18,6 @@ To download donwnload the data in json format call one of the funcations with th
 
 You can now download this project as a NuGet package through [MyGet](https://www.myget.org/feed/highgroundvision/package/nuget/HGV.Daedalus). We may move these packages to [Nuget Gallery](https://www.nuget.org/) in the future. 
 
-### Application Settings
-
-A settings.app.config file should be created in the bin directory the following values. 
-```
-<appSettings>
-    <add key="Steam:ApiKey" value="" />
-</appSettings>
-```
-
 ## License
 
 See the LICENSE file.
