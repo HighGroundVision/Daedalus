@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/HighGroundVision/Daedalus.svg?branch=master)](https://travis-ci.org/HighGroundVision/Daedalus)
 
-Uses [Dota API](https://wiki.teamfortress.com/wiki/WebAPI) download through a web API info about dota heroes, matches, leauges, teams, and items. Its primay function is to download match data.
+Uses [Dota API](https://wiki.teamfortress.com/wiki/WebAPI) download through a web API info about dota heroes, matches, leagues, teams, and items. Its primary function is to download match data.
 
 **Project Status:**
 
@@ -14,9 +14,9 @@ Uses [Dota API](https://wiki.teamfortress.com/wiki/WebAPI) download through a we
 
 ## Getting Started
 
-To download donwnload the data in json format call one of the funcations with the appropriate pramaters. 
+To download download the data in json format call one of the functions with the appropriate parameters. 
 
-You can now download this project as a NuGet package through [MyGet](https://www.myget.org/feed/highgroundvision/package/nuget/HGV.Daedalus). We may move these packages to [Nuget Gallery](https://www.nuget.org/) in the future. 
+You can now download this project as a NuGet package through [Nuget Gallery](https://www.nuget.org/packages/HGV.Daedalus/)
 
 ## License
 
@@ -26,7 +26,7 @@ See the LICENSE file.
 
 If you have any questions, you can tweet us at [@DotaHGV](https://twitter.com/DotaHGV)
 
-## Authors and Acknowledgements
+## Authors and Acknowledgments
 
 Crystalys is maintained and development by [HGV](http://www.highgroundvision.com), a leading Dota 2 data visualization and analysis web site. HGV's Team:
 
