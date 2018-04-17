@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Version>1.1.0.0</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <Authors>RGBKnights</Authors>
+    <Company>High Ground Vision</Company>
+    <Description>Uses Dota API to download info about dota heroes, matches, leauges, teams, and items.</Description>
+    <Copyright>Venatio Studios 2018</Copyright>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/HighGroundVision/Daedalus</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
