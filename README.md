@@ -1,6 +1,6 @@
 #  DOTA2 Api Client 
 
-[![Build Status](https://travis-ci.org/HighGroundVision/Daedalus.svg?branch=master)](https://travis-ci.org/HighGroundVision/Daedalus)
+[![Build status](https://ci.appveyor.com/api/projects/status/ycc0wkhq2eq49ci2?svg=true)](https://ci.appveyor.com/project/RGBKnights/daedalus)
 
 Uses [Dota API](https://wiki.teamfortress.com/wiki/WebAPI) download through a web API info about dota heroes, matches, leagues, teams, and items. Its primary function is to download match data.
 
