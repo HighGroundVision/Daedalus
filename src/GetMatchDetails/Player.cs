@@ -11,7 +11,7 @@ namespace HGV.Daedalus.GetMatchDetails
 		public long account_id { get; set; }
 		public int hero_id { get; set; }
 		public int kills { get; set; }
-		public int death { get; set; }
+		public int deaths { get; set; }
 		public int assists { get; set; }
 		public int last_hits { get; set; }
 		public int denies { get; set; }
@@ -32,6 +32,7 @@ namespace HGV.Daedalus.GetMatchDetails
 		public int hero_damage { get; set; }
 		public int tower_damage { get; set; }
 		public int hero_healing { get; set; }
+        public int leaver_status { get; set; }
 
         public List<Upgrade> ability_upgrades { get; set; }
     }
