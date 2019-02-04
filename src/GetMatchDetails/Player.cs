@@ -19,12 +19,12 @@ namespace HGV.Daedalus.GetMatchDetails
 		public int level { get; set; }
 		public int gold_per_min { get; set; }
 		public int xp_per_min { get; set; }
-		public int item0 { get; set; }
-		public int item1 { get; set; }
-		public int item2 { get; set; }
-		public int item3 { get; set; }
-		public int item4 { get; set; }
-		public int item5 { get; set; }
+		public int item_0 { get; set; }
+		public int item_1 { get; set; }
+		public int item_2 { get; set; }
+		public int item_3 { get; set; }
+		public int item_4 { get; set; }
+		public int item_5 { get; set; }
         public int backpack_0 { get; set; }
         public int backpack_1 { get; set; }
         public int backpack_2 { get; set; }
