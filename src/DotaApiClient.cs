@@ -147,7 +147,7 @@ namespace HGV.Daedalus
 		/// <summary>
 		/// https://wiki.teamfortress.com/wiki/WebAPI/GetPlayerSummaries
 		/// </summary>
-		public async Task<GetPlayerSummaries.Player> GetPlayerSummaries(long steamId)
+		public async Task<GetPlayerSummaries.Player> GetPlayerSummary(long steamId)
 		{
 			var url = string.Format("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={0}&steamids={1}", this.SteamApiKey, steamId);
 			var json = await this.Client.GetStringAsync(url);
@@ -156,10 +156,24 @@ namespace HGV.Daedalus
 			return player;
 		}
 
-		/// <summary>
-		/// https://wiki.teamfortress.com/wiki/WebAPI/GetHeroes
+        /// <summary>
+		/// https://wiki.teamfortress.com/wiki/WebAPI/GetPlayerSummaries
 		/// </summary>
-		public async Task<string> GetHeroes()
+		public async Task<List<GetPlayerSummaries.Player>> GetPlayersSummary(List<long> ids)
+        {
+            if (ids.Count > 100)
+                throw new ArgumentOutOfRangeException("ids", ids.Count, "Can only process 100 profiles at a time.");
+
+            var url = string.Format("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={0}&steamids={1}", this.SteamApiKey, String.Join(",", ids.ToArray()));
+            var json = await this.Client.GetStringAsync(url);
+            var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetPlayerSummaries.GetPlayerSummariesResult>(json);
+            return data?.response?.players;
+        }
+
+        /// <summary>
+        /// https://wiki.teamfortress.com/wiki/WebAPI/GetHeroes
+        /// </summary>
+        public async Task<string> GetHeroes()
 		{
 			var url = string.Format("https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1/?key={0}", this.SteamApiKey);
 			var json = await this.Client.GetStringAsync(url);
