@@ -9,7 +9,8 @@ namespace HGV.Daedalus.GetMatchDetails
 	{
 		public int player_slot { get; set; }
 		public long account_id { get; set; }
-		public int hero_id { get; set; }
+        public string persona { get; set; }
+        public int hero_id { get; set; }
 		public int kills { get; set; }
 		public int deaths { get; set; }
 		public int assists { get; set; }

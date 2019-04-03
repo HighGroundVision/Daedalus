@@ -58,7 +58,7 @@ namespace HGV.Daedalus
 			if (matchId == 0)
 				throw new ArgumentOutOfRangeException(nameof(matchId));
 
-			var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/v0001?key={0}&match_id={1}", this.SteamApiKey, matchId);
+			var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/v0001?key={0}&match_id={1}&include_persona_names=1", this.SteamApiKey, matchId);
 			var json = await this.Client.GetStringAsync(url);
 			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetMatchDetails.GetMatchDetailsResult>(json);
 			return data?.result;
