@@ -9,7 +9,7 @@ namespace HGV.Daedalus.GetLiveLeagueGames
 
     public class Ability
     {
-        public int ability_id { get; set; }
+        public string ability_id { get; set; }
         public int ability_level { get; set; }
     }
 
