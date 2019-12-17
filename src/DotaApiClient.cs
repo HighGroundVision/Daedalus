@@ -7,7 +7,23 @@ using System.Threading.Tasks;
 
 namespace HGV.Daedalus
 {
-	public class DotaApiClient
+	public interface IDotaApiClient
+	{
+		Task<List<HGV.Daedalus.GetLeagueListing.League>> GetLeagueListing(string lang);
+		Task<List<HGV.Daedalus.GetLiveLeagueGames.Match>> GetLiveLeagueGames();
+		Task<HGV.Daedalus.GetMatchDetails.Match> GetMatchDetails(long matchId);
+		Task<List<HGV.Daedalus.GetMatchHistory.Match>> GetLastestMatches();
+		Task<List<HGV.Daedalus.GetMatchDetails.Match>> GetMatchesInSequence(long number);
+		Task<List<HGV.Daedalus.GetMatchHistory.Match>> GetMatchHistory(long accountId);
+		Task<List<HGV.Daedalus.GetMatchHistory.Match>> GetMatchHistory(long accountId, int heroId);
+		Task<string> GetScheduledLeagueGames();
+		Task<HGV.Daedalus.GetTeamInfoByTeamID.Team> GetTeamInfoByTeamID(long teamId);
+		Task<HGV.Daedalus.GetPlayerSummaries.Player> GetPlayerSummary(long steamId);
+		Task<List<HGV.Daedalus.GetPlayerSummaries.Player>> GetPlayersSummary(List<long> ids);
+		Task<string> GetHeroes();
+	}
+
+	public class DotaApiClient : IDotaApiClient
 	{
 		private readonly string key;
 
