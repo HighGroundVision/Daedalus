@@ -20,7 +20,7 @@ namespace HGV.Daedalus
 		Task<HGV.Daedalus.GetTeamInfoByTeamID.Team> GetTeamInfoByTeamID(long teamId);
 		Task<HGV.Daedalus.GetPlayerSummaries.Player> GetPlayerSummary(long steamId);
 		Task<List<HGV.Daedalus.GetPlayerSummaries.Player>> GetPlayersSummary(List<long> ids);
-		Task<string> GetHeroes();
+		Task<long> ResolveVanity(string persona);
 	}
 
 	public class DotaApiClient : IDotaApiClient
