@@ -169,15 +169,12 @@ namespace HGV.Daedalus
             var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetPlayerSummaries.GetPlayerSummariesResult>(json);
             return data?.response?.players;
         }
-
-        /// <summary>
-        /// https://wiki.teamfortress.com/wiki/WebAPI/GetHeroes
-        /// </summary>
-        public async Task<string> GetHeroes()
+		public async Task<long> ResolveVanity(string persona)
 		{
-			var url = string.Format("https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1/?key={0}", this.SteamApiKey);
+			var url = string.Format("http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key={0}&vanityurl={1}", this.SteamApiKey, persona);
 			var json = await this.Client.GetStringAsync(url);
-			return json;
+			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<ResolveVanityURL.Result>(json);
+			return data?.steamid ?? 0L;
 		}
 	}
 }
