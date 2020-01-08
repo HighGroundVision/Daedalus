@@ -11,7 +11,7 @@ namespace HGV.Daedalus.Test
         [TestInitialize]
         public void LoadEnvironment()
         {
-            dotenv.net.DotEnv.Config();
+            dotenv.net.DotEnv.Config(throwOnError: false);
         }
 
         [TestMethod]
