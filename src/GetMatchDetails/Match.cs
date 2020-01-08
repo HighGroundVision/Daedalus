@@ -6,8 +6,8 @@ namespace HGV.Daedalus.GetMatchDetails
 	{
 		public string error { get; set; }
 
-		public long match_id { get; set; }
-		public long match_seq_num { get; set; }
+		public ulong match_id { get; set; }
+		public ulong match_seq_num { get; set; }
 
 		public bool radiant_win { get; set; }
 		public int duration { get; set; }

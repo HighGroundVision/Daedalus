@@ -8,7 +8,7 @@ namespace HGV.Daedalus.GetMatchDetails
 	public class Player
 	{
 		public int player_slot { get; set; }
-		public long account_id { get; set; }
+		public uint account_id { get; set; }
         public string persona { get; set; }
         public int hero_id { get; set; }
 		public int kills { get; set; }
@@ -29,7 +29,8 @@ namespace HGV.Daedalus.GetMatchDetails
         public int backpack_0 { get; set; }
         public int backpack_1 { get; set; }
         public int backpack_2 { get; set; }
-        public int gold_spent { get; set; }
+		public int backpack_3 { get; set; }
+		public int gold_spent { get; set; }
 		public int hero_damage { get; set; }
 		public int tower_damage { get; set; }
 		public int hero_healing { get; set; }

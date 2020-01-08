@@ -4,7 +4,7 @@ namespace HGV.Daedalus.ResolveVanityURL
 {
     public class Result
     {
-        public long steamid { get; set; }
+        public ulong steamid { get; set; }
 		public int status { get; set; }
     }
 }

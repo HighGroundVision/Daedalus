@@ -5,8 +5,8 @@ namespace HGV.Daedalus.GetMatchHistory
 {
     public class Match
     {
-        public long match_id { get; set; }
-        public long match_seq_num { get; set; }
+        public ulong match_id { get; set; }
+        public ulong match_seq_num { get; set; }
 		public long start_time { get; set; }
 		public int lobby_type { get; set; }
 		public long radiant_team_id { get; set; }

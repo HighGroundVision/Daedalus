@@ -5,10 +5,10 @@ namespace HGV.Daedalus.GetLiveLeagueGames
 {
     public class Match
     {
-        public long lobby_id { get; set; }
-        public long match_id { get; set; }
+        public ulong lobby_id { get; set; }
+        public ulong match_id { get; set; }
         public int spectators { get; set; }
-        public int league_id { get; set; }
+        public uint league_id { get; set; }
         public float stream_delay_s { get; set; }
         public int radiant_series_wins { get; set; }
         public int dire_series_wins { get; set; }

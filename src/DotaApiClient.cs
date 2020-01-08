@@ -174,7 +174,7 @@ namespace HGV.Daedalus
             return data?.response?.players;
         }
 
-		public async Task<long> ResolveVanity(string persona)
+		public async Task<ulong> ResolveVanity(string persona)
 		{
 			var url = string.Format("http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key={0}&vanityurl={1}", this.key, persona);
 			var json = await this.client.GetStringAsync(url);

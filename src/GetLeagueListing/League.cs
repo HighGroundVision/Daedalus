@@ -8,7 +8,7 @@ namespace HGV.Daedalus.GetLeagueListing
 	public class League
 	{
 		public string name { get; set; }
-		public long leagueid { get; set; }
+		public uint leagueid { get; set; }
 		public string description { get; set; }
 		public string tournament_url { get; set; }
 		public long itemdef { get; set; }

@@ -7,7 +7,7 @@ namespace HGV.Daedalus.GetTeamInfoByTeamID
 {
 	public class Team
 	{
-		public long team_id { get; set; }
+		public uint team_id { get; set; }
 		public string name { get; set; }
 		public string tag { get; set; }
 		public long time_created { get; set; }

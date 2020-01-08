@@ -8,7 +8,7 @@ namespace HGV.Daedalus.GetMatchDetails
 {
     public class Upgrade
     {
-        public string ability { get; set; }
+        public int ability { get; set; }
         public long time { get; set; }
         public int level { get; set; }
     }
