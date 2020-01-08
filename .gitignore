@@ -197,3 +197,4 @@ FakesAssemblies/
 
 # App Config Setting Overrides
 *.app.config
+*.env

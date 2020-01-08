@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using HGV.Daedalus.GetMatchDetails;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,15 @@ namespace HGV.Daedalus
 {
 	public interface IDotaApiClient
 	{
-		Task<List<HGV.Daedalus.GetLeagueListing.League>> GetLeagueListing(string lang);
-		Task<List<HGV.Daedalus.GetLiveLeagueGames.Match>> GetLiveLeagueGames();
-		Task<HGV.Daedalus.GetMatchDetails.Match> GetMatchDetails(long matchId);
+		Task<List<HGV.Daedalus.GetLiveLeagueGames.Match>> GetLiveLeagueGames(uint leagueId = 0, ulong matchId = 0);
+		Task<HGV.Daedalus.GetMatchDetails.Match> GetMatchDetails(ulong matchId);
 		Task<List<HGV.Daedalus.GetMatchHistory.Match>> GetLastestMatches();
-		Task<List<HGV.Daedalus.GetMatchDetails.Match>> GetMatchesInSequence(long number);
-		Task<List<HGV.Daedalus.GetMatchHistory.Match>> GetMatchHistory(long accountId);
-		Task<List<HGV.Daedalus.GetMatchHistory.Match>> GetMatchHistory(long accountId, int heroId);
-		Task<string> GetScheduledLeagueGames();
+		Task<List<HGV.Daedalus.GetMatchDetails.Match>> GetMatchesInSequence(ulong number);
+		Task<List<HGV.Daedalus.GetMatchHistory.Match>> GetMatchHistory(uint accountId);
+		Task<List<HGV.Daedalus.GetMatchHistory.Match>> GetMatchHistory(uint accountId, int heroId);
 		Task<HGV.Daedalus.GetTeamInfoByTeamID.Team> GetTeamInfoByTeamID(long teamId);
-		Task<HGV.Daedalus.GetPlayerSummaries.Player> GetPlayerSummary(long steamId);
-		Task<List<HGV.Daedalus.GetPlayerSummaries.Player>> GetPlayersSummary(List<long> ids);
-		Task<long> ResolveVanity(string persona);
+		Task<HGV.Daedalus.GetPlayerSummaries.Player> GetPlayerSummary(ulong steamId);
+		Task<List<HGV.Daedalus.GetPlayerSummaries.Player>> GetPlayersSummary(List<ulong> ids);
 	}
 
 	public class DotaApiClient : IDotaApiClient
@@ -36,31 +34,31 @@ namespace HGV.Daedalus
 		}
 
 		/// <summary>
-		/// https://wiki.teamfortress.com/wiki/WebAPI/GetLeagueListing
-		/// </summary>
-		public async Task<List<GetLeagueListing.League>> GetLeagueListing(string lang = "en")
-		{
-			var url = string.Format("http://api.steampowered.com/IDOTA2Match_570/GetLeagueListing/v1/?key={0}&language={1}", this.key, lang);
-			var json = await this.client.GetStringAsync(url);
-			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetLeagueListing.GetLeagueListingResult>(json);
-			return data?.result?.leagues ?? new List<GetLeagueListing.League>();
-		}
-
-		/// <summary>
 		/// https://wiki.teamfortress.com/wiki/WebAPI/GetLiveLeagueGames
 		/// </summary>
-		public async Task<List<GetLiveLeagueGames.Match>> GetLiveLeagueGames()
+		public async Task<List<GetLiveLeagueGames.Match>> GetLiveLeagueGames(uint leagueId = 0, ulong matchId = 0)
 		{
-			var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetLiveLeagueGames/v0001?key={0}", this.key);
+			string url;
+			if (leagueId != 0 && matchId != 0)
+				url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetLiveLeagueGames/v0001?key={0}&league_id={1}&match_id={2}", this.key, leagueId, matchId);
+			else if(leagueId != 0)
+				url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetLiveLeagueGames/v0001?key={0}&league_id={1}", this.key, leagueId);
+			else if (matchId != 0)
+				url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetLiveLeagueGames/v0001?key={0}&match_id={1}", this.key, matchId);
+			else
+				url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetLiveLeagueGames/v0001?key={0}", this.key);
+			
+
 			var json = await this.client.GetStringAsync(url);
 			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetLiveLeagueGames.GetLiveLeagueGamesResult>(json);
 			return data?.result?.games ?? new List<GetLiveLeagueGames.Match>();
 		}
 
+
 		/// <summary>
 		/// https://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails
 		/// </summary>
-		public async Task<GetMatchDetails.Match> GetMatchDetails(long matchId)
+		public async Task<GetMatchDetails.Match> GetMatchDetails(ulong matchId)
 		{
 			if (matchId == 0)
 				throw new ArgumentOutOfRangeException(nameof(matchId));
@@ -85,7 +83,7 @@ namespace HGV.Daedalus
         /// <summary>
 		/// https://wiki.teamfortress.com/wiki/WebAPI/GetMatchHistoryBySequenceNum
 		/// </summary>
-		public async Task<List<GetMatchDetails.Match>> GetMatchesInSequence(long number)
+		public async Task<List<GetMatchDetails.Match>> GetMatchesInSequence(ulong number)
         {
             if (number == 0)
                 throw new ArgumentOutOfRangeException(nameof(number));
@@ -99,7 +97,7 @@ namespace HGV.Daedalus
         /// <summary>
         /// https://wiki.teamfortress.com/wiki/WebAPI/GetMatchHistory
         /// </summary>
-        public async Task<List<GetMatchHistory.Match>> GetMatchHistory(long accountId)
+        public async Task<List<GetMatchHistory.Match>> GetMatchHistory(uint accountId)
 		{
 			if (accountId == 0)
 				throw new ArgumentOutOfRangeException(nameof(accountId));
@@ -113,7 +111,7 @@ namespace HGV.Daedalus
 		/// <summary>
 		/// https://wiki.teamfortress.com/wiki/WebAPI/GetMatchHistory
 		/// </summary>
-		public async Task<List<GetMatchHistory.Match>> GetMatchHistory(long accountId, int heroId)
+		public async Task<List<GetMatchHistory.Match>> GetMatchHistory(uint accountId, int heroId)
 		{
 			if (accountId == 0)
 				throw new ArgumentOutOfRangeException(nameof(accountId));
@@ -125,16 +123,6 @@ namespace HGV.Daedalus
 			var json = await this.client.GetStringAsync(url);
 			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetMatchHistory.GetMatchHistoryResult>(json);
 			return data?.result?.matches ?? new List<Daedalus.GetMatchHistory.Match>();
-		}
-
-		/// <summary>
-		/// https://wiki.teamfortress.com/wiki/WebAPI/GetScheduledLeagueGames
-		/// </summary>
-		public async Task<string> GetScheduledLeagueGames()
-		{
-			var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetScheduledLeagueGames/v0001/?key={0}", this.key);
-			var json = await this.client.GetStringAsync(url);
-			return json;
 		}
 		
 		/// <summary>
@@ -151,7 +139,7 @@ namespace HGV.Daedalus
 		/// <summary>
 		/// https://wiki.teamfortress.com/wiki/WebAPI/GetPlayerSummaries
 		/// </summary>
-		public async Task<GetPlayerSummaries.Player> GetPlayerSummary(long steamId)
+		public async Task<GetPlayerSummaries.Player> GetPlayerSummary(ulong steamId)
 		{
 			var url = string.Format("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={0}&steamids={1}", this.key, steamId);
 			var json = await this.client.GetStringAsync(url);
@@ -163,7 +151,7 @@ namespace HGV.Daedalus
         /// <summary>
 		/// https://wiki.teamfortress.com/wiki/WebAPI/GetPlayerSummaries
 		/// </summary>
-		public async Task<List<GetPlayerSummaries.Player>> GetPlayersSummary(List<long> ids)
+		public async Task<List<GetPlayerSummaries.Player>> GetPlayersSummary(List<ulong> ids)
         {
             if (ids.Count > 100)
                 throw new ArgumentOutOfRangeException("ids", ids.Count, "Can only process 100 profiles at a time.");
@@ -173,13 +161,5 @@ namespace HGV.Daedalus
             var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetPlayerSummaries.GetPlayerSummariesResult>(json);
             return data?.response?.players;
         }
-
-		public async Task<ulong> ResolveVanity(string persona)
-		{
-			var url = string.Format("http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key={0}&vanityurl={1}", this.key, persona);
-			var json = await this.client.GetStringAsync(url);
-			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<ResolveVanityURL.Result>(json);
-			return data?.steamid ?? 0L;
-		}
 	}
 }
