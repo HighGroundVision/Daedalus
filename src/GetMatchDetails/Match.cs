@@ -2,13 +2,16 @@
 
 namespace HGV.Daedalus.GetMatchDetails
 {
-    public class Match
+	public class Match : MatchDetails
+	{
+		public List<Player> players { get; set; }
+	}
+
+	public class MatchDetails
 	{
 		public string error { get; set; }
-
 		public ulong match_id { get; set; }
 		public ulong match_seq_num { get; set; }
-
 		public bool radiant_win { get; set; }
 		public int duration { get; set; }
 		public long start_time { get; set; }
@@ -25,7 +28,5 @@ namespace HGV.Daedalus.GetMatchDetails
 		public int negative_votes { get; set; }
 		public int game_mode { get; set; }
 		public int engine { get; set; }
-
-		public List<Player> players { get; set; }
     }
 }
