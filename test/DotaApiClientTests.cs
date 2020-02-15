@@ -156,5 +156,17 @@ namespace HGV.Daedalus.Test
             var collection = await client.GetPlayersSummary(input);
             Assert.IsTrue(collection.Count > 0);
         }
+
+        [TestMethod]
+        public async Task GetFriendsList()
+        {
+            var provider = new MoqSteamKeyProvider();
+            var factory = new MoqHttpClientFactory();
+            var client = new DotaApiClient(provider, factory);
+
+            ulong input = 76561197995231280;
+            var collection = await client.GetFriendsList(input);
+            Assert.IsTrue(collection.Count > 0);
+        }
     }
 }

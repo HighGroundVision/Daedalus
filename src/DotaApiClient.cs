@@ -19,6 +19,7 @@ namespace HGV.Daedalus
 		Task<HGV.Daedalus.GetTeamInfoByTeamID.Team> GetTeamInfoByTeamID(long teamId);
 		Task<HGV.Daedalus.GetPlayerSummaries.Player> GetPlayerSummary(ulong steamId);
 		Task<List<HGV.Daedalus.GetPlayerSummaries.Player>> GetPlayersSummary(List<ulong> ids);
+		Task<List<HGV.Daedalus.GetFriendsList.Friend>> GetFriendsList(ulong steamId);
 	}
 
 	public class DotaApiClient : IDotaApiClient
@@ -161,5 +162,13 @@ namespace HGV.Daedalus
             var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetPlayerSummaries.GetPlayerSummariesResult>(json);
             return data?.response?.players;
         }
+
+		public async Task<List<GetFriendsList.Friend>> GetFriendsList(ulong steamId)
+		{
+			var url = string.Format("http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key={0}&steamid={1}", this.key, steamId);
+			var json = await this.client.GetStringAsync(url);
+			var data = Newtonsoft.Json.JsonConvert.DeserializeObject<GetFriendsList.GetFriendsListReponse>(json);
+			return data?.FriendsList?.Friends;
+		}
 	}
 }
