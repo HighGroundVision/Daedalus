@@ -29,7 +29,7 @@ namespace HGV.Daedalus.GetMatchDetails
         public int backpack_0 { get; set; }
         public int backpack_1 { get; set; }
         public int backpack_2 { get; set; }
-		public int backpack_3 { get; set; }
+		public int item_neutral { get; set; }
 		public int gold_spent { get; set; }
 		public int hero_damage { get; set; }
 		public int tower_damage { get; set; }
