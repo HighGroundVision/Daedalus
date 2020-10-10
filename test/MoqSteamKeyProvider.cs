@@ -8,7 +8,7 @@ namespace HGV.Daedalus.Test
     {
         public string GetKey()
         {
-            return Environment.GetEnvironmentVariable("SteamKey");
+            return Environment.GetEnvironmentVariable("STEAM_KEY");
         }
     }
 }
