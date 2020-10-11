@@ -11,7 +11,9 @@
     <Description>Uses Dota API to download info about dota heroes, matches, leauges, teams, and items.</Description>
     <Copyright>Venatio Studios 2018</Copyright>
     <PackageLicenseUrl></PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/HighGroundVision/Daedalus</PackageProjectUrl>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/HighGroundVision/Daedalus</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
