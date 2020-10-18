@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HGV.Daedalus", "src\HGV.Daedalus.csproj", "{BCAC3EE2-C6BB-4401-BB92-816AB615085D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HGV.Daedalus.Test", "test\HGV.Daedalus.Test.csproj", "{3F6D7D36-792D-4326-B97D-EDD9996DCFCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HGV.Daedalus.Test", "test\HGV.Daedalus.Test.csproj", "{3F6D7D36-792D-4326-B97D-EDD9996DCFCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

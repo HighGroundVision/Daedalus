@@ -15,51 +15,6 @@ namespace HGV.Daedalus.Test
         }
 
         [TestMethod]
-        public async Task GetLiveLeagueGames()
-        {
-            var provider = new MoqSteamKeyProvider();
-            var factory = new MoqHttpClientFactory();
-            var client = new DotaApiClient(provider, factory);
-
-            var collection = await client.GetLiveLeagueGames();
-            Assert.IsTrue(collection.Count > 0);
-        }
-
-        [TestMethod]
-        public async Task GetLiveLeagueGamesByMatch()
-        {
-            var provider = new MoqSteamKeyProvider();
-            var factory = new MoqHttpClientFactory();
-            var client = new DotaApiClient(provider, factory);
-
-            var collection = await client.GetLiveLeagueGames();
-            Assert.IsTrue(collection.Count > 0);
-
-            var match = collection.FirstOrDefault();
-            Assert.IsNotNull(match);
-
-            var results = await client.GetLiveLeagueGames(matchId: match.match_id);
-            Assert.IsTrue(results.Count > 0);
-        }
-
-        [TestMethod]
-        public async Task GetLiveLeagueGamesByLeague()
-        {
-            var provider = new MoqSteamKeyProvider();
-            var factory = new MoqHttpClientFactory();
-            var client = new DotaApiClient(provider, factory);
-
-            var collection = await client.GetLiveLeagueGames();
-            Assert.IsTrue(collection.Count > 0);
-
-            var match = collection.FirstOrDefault();
-            Assert.IsNotNull(match);
-
-            var results = await client.GetLiveLeagueGames(leagueId: match.league_id);
-            Assert.IsTrue(results.Count > 0);
-        }
-
-        [TestMethod]
         public async Task GetMatchDetails()
         {
             var provider = new MoqSteamKeyProvider();
@@ -129,7 +84,7 @@ namespace HGV.Daedalus.Test
             var client = new DotaApiClient(provider, factory);
 
             var teamId = 2013239;
-            var team = await client.GetTeamInfoByTeamID(teamId);
+            var team = await client.GetTeamInfo(teamId);
             Assert.IsNotNull(team);
         }
 
